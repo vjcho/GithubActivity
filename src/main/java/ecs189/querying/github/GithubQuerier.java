@@ -34,6 +34,8 @@ public class GithubQuerier {
             Date date = inFormat.parse(creationDate);
             String formatted = outFormat.format(date);
 
+            JSONArray commits = event.getJSONObject("payload").getJSONArray("commits");
+
             // Add type of event as header
             sb.append("<h3 class=\"type\">");
             sb.append(type);
@@ -42,6 +44,15 @@ public class GithubQuerier {
             sb.append(" on ");
             sb.append(formatted);
             sb.append("<br />");
+
+            // Add list of commits
+            sb.append("<br/>");
+            sb.append("Commits: <br/>");
+            sb.append("<ul>");
+            for (int j = 0; j < commits.length(); j++) {
+                sb.append("<li>" + commits.getJSONObject(j).getString("sha").substring(0,7) + " - " + commits.getJSONObject(j).getString("message") + "</li>");
+            }
+            sb.append("</ul>");
             // Add collapsible JSON textbox (don't worry about this for the homework; it's just a nice CSS thing I like)
             sb.append("<a data-toggle=\"collapse\" href=\"#event-" + i + "\">JSON</a>");
             sb.append("<div id=event-" + i + " class=\"collapse\" style=\"height: auto;\"> <pre>");
@@ -59,9 +70,13 @@ public class GithubQuerier {
         JSONObject json = Util.queryAPI(new URL(url));
         System.out.println(json);
         JSONArray events = json.getJSONArray("root");
-        for (int i = 0; i < events.length() && i < 10; i++) {
-            eventList.add(events.getJSONObject(i));
+        for (int i = 0; i < events.length(); i++) {
+            if (events.getJSONObject(i).get("type").equals("PushEvent"))
+                eventList.add(events.getJSONObject(i));
+            if (eventList.size() == 10)
+                break;
         }
+        System.out.println(eventList);
         return eventList;
     }
 }
