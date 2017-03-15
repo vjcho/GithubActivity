@@ -1,0 +1,12 @@
+Valerie Cho 998831802
+Selena Tuyen 999085398
+
+We created swap1.sh which redirects nginx from web2 to web1. This works by changing the 'proxy_pass' in nginx.conf to the new address. This script looks just like swap2.sh, with web1 and web2 switched.
+
+We also wrote the extra credit script 'doswap.sh'. This script runs the commands that we would have otherwise ran manually.
+
+
+Example commands for switching from web1 to web2:
+docker run --network ecs189_default --name web2 activity2
+docker exec ecs189_proxy_1 /bin/bash /bin/swap2.sh
+docker rm -f web1
