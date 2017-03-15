@@ -50,7 +50,7 @@ public class GithubQuerier {
             sb.append("Commits: <br/>");
             sb.append("<ul>");
             for (int j = 0; j < commits.length(); j++) {
-                sb.append("<li>" + commits.getJSONObject(j).getString("sha").substring(0,7) + " - " + commits.getJSONObject(j).getString("message") + "</li>");
+                sb.append("<li>" + commits.getJSONObject(j).getString("sha").substring(0,8) + " - " + commits.getJSONObject(j).getString("message") + "</li>");
             }
             sb.append("</ul>");
             // Add collapsible JSON textbox (don't worry about this for the homework; it's just a nice CSS thing I like)
