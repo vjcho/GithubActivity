@@ -32,10 +32,12 @@ do
 		old=$name
 		new="web2"
 		script="/bin/swap2.sh"
+		killitif web2
 	elif [[ $name == *"web2"* ]]; then
 		old=$name
 		new="web1"
 		script="/bin/swap1.sh"
+		killitif web1
 	fi
 done
 
