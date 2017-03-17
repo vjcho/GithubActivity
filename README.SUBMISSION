@@ -5,6 +5,10 @@ We created swap1.sh which redirects nginx from web2 to web1. This works by chang
 
 We also wrote the extra credit script 'doswap.sh'. This script runs the commands that we would have otherwise ran manually.
 
+Added scripts:
+hw4/doswap.sh
+hw4/nginx-rev/swap1.sh
+
 
 Example commands for switching from web1 to web2:
 docker run --network ecs189_default --name web2 activity2
