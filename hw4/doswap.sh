@@ -43,7 +43,7 @@ done
 docker run --network ecs189_default --name $new $docker &
 
 # Redirect nginx
-sleep 10
+sleep 20
 docker exec ecs189_proxy_1 /bin/bash $script
 
 # Kill old container
