@@ -1,5 +1,5 @@
-Valerie Cho 998831802
-Selena Tuyen 999085398
+Valerie Cho
+Selena Tuyen
 
 We created swap1.sh which redirects nginx from web2 to web1. This works by changing the 'proxy_pass' in nginx.conf to the new address. This script looks just like swap2.sh, with web1 and web2 switched.
 
